@@ -10,7 +10,8 @@
     "node-fetch": "^2.6.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
-    "react-scripts": "3.2.0"
+    "react-scripts": "3.2.0",
+    "redux-form": "^8.2.6"
   },
   "scripts": {
     "start": "react-scripts start",
