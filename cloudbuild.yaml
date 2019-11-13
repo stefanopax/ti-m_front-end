@@ -1,6 +1,6 @@
 steps:
 - name: 'eu.gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', '$PROJECT_ID/$_REPOSITORY', '.' ]
+  args: [ 'build', '-t', 'eu.gcr.io/$PROJECT_ID/$_REPOSITORY', '.' ]
   
 images:
 - 'eu.gcr.io/$PROJECT_ID/$_REPOSITORY'
