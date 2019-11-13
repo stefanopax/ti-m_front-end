@@ -1,0 +1,49 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+}
+
+.App-left{
+  float: left;
+  position: relative;
+  min-height: 100vh;
+
+  flex-direction: column;
+  align-items: center;
+  
+  font-size: calc(10px + 2vmin);
+  color: white;
+  width: 60%;
+  background-color: red;
+}
+
+.App-right{
+  float: left;
+  position: relative;
+  min-height: 100vh;
+
+  text-align: left;
+  
+  
+  font-size: calc(10px + 2vmin);
+  width:40%;
+  background-color: white;
+}
+
+.App-link {
+  color: #09d3ac;
+}
+
+
+
+.button-margin{
+  margin: 15px;
+}
+
+.json-format{
+  font-size: 1.2rem;
+  line-height: 1.2;
+}
