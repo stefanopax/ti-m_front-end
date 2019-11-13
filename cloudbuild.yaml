@@ -1,5 +1,6 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', 'gcr.io/milano-recuiting-group2/frontend', '.' ]
+  args: [ 'build', '-t', '$PROJECT_ID/$_REPOSITORY', '.' ]
+  
 images:
-- 'gcr.io/milano-recuiting-group2/frontend'
+- '$PROJECT_ID/$_REPOSITORY'
