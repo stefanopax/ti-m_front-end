@@ -3,4 +3,4 @@ steps:
   args: [ 'build', '-t', '$PROJECT_ID/$_REPOSITORY', '.' ]
   
 images:
-- '$PROJECT_ID/$_REPOSITORY'
+- 'gcr.io/$PROJECT_ID/$_REPOSITORY'
