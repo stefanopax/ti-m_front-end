@@ -3,7 +3,7 @@ var jwt = require('jsonwebtoken');
 const secret = 'd7bffd5d-1ef6-4ce0-bd71-a79d503863da';
 const token_key = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMSUQtMTAwIiwibmFtZSI6Ikpob24gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJhdXRob3JpdGllcyI6WyJVU0VSIl19.cw8LYIJrN5d4HXL5GF7BIF1rcBZ2FxKmMyi9LzXVPT8';
 const prefix = "Bearer";
-const baseURL = "http://34.77.149.195/"
+const baseURL = "http://34.70.159.214"
 const private_header = prefix + ' ' + token_key;
 
 var express = require('express')
@@ -53,8 +53,6 @@ app.get('/actuator/health', function (req, res, next) {
     }, (error) => {
         console.log(error);
     });
-
-
 })
 
 app.get('/token', function (req, res, next) {
@@ -90,15 +88,7 @@ app.post('/private/entity', function (req, res, next) {
         }
     };
 
-    // const body = {
-    //     loginId: 'LID-159',
-    //     tenant: 'tim',
-    //     name: 'Marco Molfetta'
-    // }
-
     const body = req.body;
-
-
 
     axios.post(my_url, body, options).then((response) => {
         console.log(response);
@@ -107,8 +97,6 @@ app.post('/private/entity', function (req, res, next) {
     }, (error) => {
         console.log(error.response);
     });
-
-
 
 });
 

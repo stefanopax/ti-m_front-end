@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
+import Input from '@material-ui/core/Input';
 import './App.css';
 
-const base_url = 'http://localhost:80/'
+const base_url = 'http://localhost:80'
 const axios = require('axios')
 
 class App extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -13,9 +15,10 @@ class App extends Component {
       token_key: null,
       loginId: "",
       tenant: "",
-      name:""
+      name:"",
+      entity_number:0
     }
-
+ 
     this.requestGet = this.requestGet.bind(this);
     this.requestPost = this.requestPost.bind(this);
     this.getToken = this.getToken.bind(this);
@@ -45,13 +48,21 @@ class App extends Component {
 
     const url = base_url + path;
 
-    axios.get(url).then((response) => {
+    const body = {
+      'loginId': this.state.loginId,//'LID-1588',
+      'tenant': this.state.tenant,//'tim',
+      'name': this.state.name//'Stefano Paci'
+    }
+    
+    axios.get(url, body).then((response) => {
       const formatted = JSON.stringify(response.data, undefined, 4);
       this.setState({
         json: formatted
       })
     })
   }
+
+  
 
   getToken() {
     const url = 'http://localhost:80/token';
@@ -61,6 +72,22 @@ class App extends Component {
         token_key: token
       })
     })
+  }
+
+  requestPrivateEntity(path) {
+
+    let number=parseInt(this.state.entity_number);
+    let url = base_url+path;
+
+    axios.get(url, null, { params: {
+      number      
+    }}).then((response) => {
+      const formatted = JSON.stringify(response.data, undefined, 4);
+      this.setState({
+        json: formatted
+      })
+    })
+
   }
 
   handleChangeLogin(event) {
@@ -73,22 +100,27 @@ class App extends Component {
 
   handleChangeName(event) {
     this.setState({name: event.target.value});
-  }  
+  } 
+  
+  handlePrivateEntity(event) {
+    this.setState({entity_number: event.target.value});
+    console.log(event.target.value)
+  } 
 
   render() {
-    
+
     return (
-      <div className="App" >
+      <div className="App">
         <div className="App-left">
           <div className="button-margin">
-            <Button variant="contained" color="primary" onClick={() => this.requestGet('public')} >
+            <Button variant="contained" color="primary" onClick={()=>this.requestGet('public')} >
               GET public
-        </Button>
+            </Button>
           </div>
           <div className="button-margin">
             <Button variant="contained" color="primary" onClick={() => this.getToken()} >
               Generate JWT TOKEN
-        </Button>
+          </Button>
           </div>
           <div className="button-margin">
             <Button variant="contained" color="primary" onClick={() => this.requestGet('actuator/health')} >
@@ -102,18 +134,28 @@ class App extends Component {
           </div>
           <form>
             <label>
+              number:
+              <Input value={this.state.entity_number} onChange={this.handlePrivateEntity} />
+            </label>
+            <br/>
+            <Button variant="contained" color="primary" onClick={() => this.requestPrivateEntity('private/entity')} >
+              Get private entity
+            </Button>
+          </form>
+          <form>
+            <label>
               loginId:
-              <textarea value={this.state.value} onChange={this.handleChangeLogin} />
+              <Input value={this.state.value} onChange={this.handleChangeLogin} />
             </label>
             <br/>
             <label>
               tenant:
-              <textarea value={this.state.value} onChange={this.handleChangeTenant} />
+              <Input value={this.state.value} onChange={this.handleChangeTenant} />
             </label>
             <br/>
             <label>
               name:
-              <textarea value={this.state.value} onChange={this.handleChangeName} />
+              <Input value={this.state.value} onChange={this.handleChangeName} />
             </label>
             <br/>
             <Button variant="contained" color="primary" onClick={() => this.requestPost('private/entity')} >
