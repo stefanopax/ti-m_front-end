@@ -24,7 +24,7 @@ COPY ./public $PROJECT_HOME/public
 RUN npm run build
 
 # run node server
-RUN node $PROJECT_HOME/src/service/Proxy.js
+RUN nohup node $PROJECT_HOME/src/service/Proxy.js >> app.log 2>&1 &
 
 #### Stage 2: Serve the React application from Nginx 
 FROM nginx:latest
