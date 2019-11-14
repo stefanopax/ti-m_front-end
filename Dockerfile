@@ -20,7 +20,7 @@ RUN npm install
 COPY ./src $PROJECT_HOME/src
 COPY ./public $PROJECT_HOME/public
 
-# build for production
+# build
 RUN npm run build
 
 # run node server
