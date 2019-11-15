@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const baseURL = "http://104.198.79.199:8080/"
+const baseURL = "http://34.96.120.182/"
 
 export const jwtService = {
     public_call,
