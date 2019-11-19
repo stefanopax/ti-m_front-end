@@ -12,20 +12,22 @@ import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import { mainListItems, entityListItems, documentListItems, statusListItems, proxyListItems } from './listItems';
-import MyApp from './MyApp';
-import logo from "./assets/logo.png";
+import { mainListItems, secondaryListItems } from './listItems';
+import Chart from './Chart';
+import Deposits from './Deposits';
+import Orders from './Orders';
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
-        The Dockerz
+        Your Website
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -140,11 +142,11 @@ export default function Dashboard() {
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            Admin GUI
+            Dashboard
           </Typography>
           <IconButton color="inherit">
-            <Badge>
-              <img src={logo}  alt="gcp logo" height="40em" width="40em"/>
+            <Badge badgeContent={4} color="secondary">
+              <NotificationsIcon />
             </Badge>
           </IconButton>
         </Toolbar>
@@ -162,21 +164,32 @@ export default function Dashboard() {
           </IconButton>
         </div>
         <Divider />
-        <List>{statusListItems}</List>
-        <Divider />
         <List>{mainListItems}</List>
         <Divider />
-        <List>{entityListItems}</List>
-        <Divider />
-        <List>{documentListItems}</List>
-        <Divider />
-        <List>{proxyListItems}</List>
+        <List>{secondaryListItems}</List>
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
-            <MyApp></MyApp>
+            {/* Chart */}
+            <Grid item xs={12} md={8} lg={9}>
+              <Paper className={fixedHeightPaper}>
+                <Chart />
+              </Paper>
+            </Grid>
+            {/* Recent Deposits */}
+            <Grid item xs={12} md={4} lg={3}>
+              <Paper className={fixedHeightPaper}>
+                <Deposits />
+              </Paper>
+            </Grid>
+            {/* Recent Orders */}
+            <Grid item xs={12}>
+              <Paper className={classes.paper}>
+                <Orders />
+              </Paper>
+            </Grid>
           </Grid>
         </Container>
         <Copyright />
