@@ -159,7 +159,7 @@ class App extends Component {
     this.setState({
       is_authenticated: !this.state.is_authenticated
     })
-    const url = 'http://35.223.96.199:80/token';
+    const url = 'http://34.70.66.223/token';
     axios.get(url).then((response) => {
       const token = response.data;
       this.setState({
