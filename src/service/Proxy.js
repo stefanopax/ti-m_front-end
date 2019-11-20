@@ -3,8 +3,9 @@ var jwt = require('jsonwebtoken');
 const secret = 'd7bffd5d-1ef6-4ce0-bd71-a79d503863da';
 const token_key = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMSUQtMTAwIiwibmFtZSI6Ikpob24gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJhdXRob3JpdGllcyI6WyJVU0VSIl19.cw8LYIJrN5d4HXL5GF7BIF1rcBZ2FxKmMyi9LzXVPT8';
 const prefix = "Bearer";
-const baseURL = "https://www.thedockerz.com/"
+const baseURL = "http://www.thedockerz.com/"
 const private_header = prefix + ' ' + token_key;
+const port = process.env.PORT || 80;
 
 var express = require('express')
 var cors = require('cors')
@@ -166,6 +167,6 @@ app.get('/private/document/:id', function (req, res, next) {
     });
 })
 
-app.listen(80, function () {
+app.listen(port, function () {
     console.log('CORS-enabled web server listening on port 80')
 })
