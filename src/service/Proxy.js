@@ -167,6 +167,6 @@ app.get('/private/document/:id', function (req, res, next) {
     });
 })
 
-app.listen(port, function () {
+app.listen(9000, function () {
     console.log('CORS-enabled web server listening on port 80')
 })
