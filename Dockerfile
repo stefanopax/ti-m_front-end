@@ -25,4 +25,4 @@ RUN nohup npm start  >> app.log 2>&1 &
 
 #RUN nohup node $PROJECT_HOME/src/service/Proxy.js >> app.log 2>&1 &
 
-CMD ["node","/src/service/Proxy.js"]
+CMD ["node","opt/app/src/service/Proxy.js"]
