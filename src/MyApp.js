@@ -18,7 +18,7 @@ import SuccessSnackbars from './SuccessSnackbars'
 
 import { withStyles } from "@material-ui/core/styles";
 
-const base_url = 'http://localhost:80/'
+const base_url = 'http://35.223.96.199/'
 const axios = require('axios')
 
 //axios.defaults.timeout = 5000
@@ -158,7 +158,7 @@ class App extends Component {
     this.setState({
       is_authenticated: !this.state.is_authenticated
     })
-    const url = 'http://localhost:80/token';
+    const url = 'http://35.223.96.199:80/token';
     axios.get(url).then((response) => {
       const token = response.data;
       this.setState({
