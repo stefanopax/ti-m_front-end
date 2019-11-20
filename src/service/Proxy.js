@@ -5,7 +5,7 @@ const token_key = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMSUQtMTAwIiwi
 const prefix = "Bearer";
 const baseURL = "http://www.thedockerz.com/"
 const private_header = prefix + ' ' + token_key;
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 9000;
 
 var express = require('express')
 var cors = require('cors')

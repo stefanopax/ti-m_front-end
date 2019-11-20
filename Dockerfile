@@ -1,5 +1,5 @@
 #### Stage 1: Build the react application
-FROM node:alpine as build
+FROM node:alpine
 
 RUN mkdir -p /opt/app
 ENV PROJECT_HOME /opt/app
@@ -20,22 +20,7 @@ RUN npm install
 COPY ./src $PROJECT_HOME/src
 COPY ./public $PROJECT_HOME/public
 
-# build
-RUN npm run build
-
-# run node server
+# run express server
 RUN nohup node $PROJECT_HOME/src/service/Proxy.js >> app.log 2>&1 &
 
-#### Stage 2: Serve the React application from Nginx 
-FROM nginx:latest
-
-# Copy the react build from Stage 1
-COPY --from=build /opt/app/build /var/www
-
-# Copy our custom nginx config
-COPY ./nginx.conf /etc/nginx/nginx.conf
-
-# Expose port 80 to the Docker host, so we can access it from the outside.
-EXPOSE 80
-
-ENTRYPOINT ["nginx","-g","daemon off;"]
+CMD ["npm","start"]
