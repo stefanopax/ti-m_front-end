@@ -21,7 +21,7 @@ COPY ./src $PROJECT_HOME/src
 COPY ./public $PROJECT_HOME/public
 
 # run express server
-RUN npm start
+RUN nohup npm start  >> app.log 2>&1 &
 
 #RUN nohup node $PROJECT_HOME/src/service/Proxy.js >> app.log 2>&1 &
 

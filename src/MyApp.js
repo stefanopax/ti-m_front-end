@@ -18,7 +18,7 @@ import SuccessSnackbars from './SuccessSnackbars'
 
 import { withStyles } from "@material-ui/core/styles";
 
-const base_url = "http://"+window.location.hostname + ":9000/"
+const base_url = "http://"+window.location.hostname + ":80/"
 const axios = require('axios')
 
 //axios.defaults.timeout = 5000

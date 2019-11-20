@@ -5,7 +5,7 @@ const token_key = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMSUQtMTAwIiwi
 const prefix = "Bearer";
 const baseURL = "http://www.thedockerz.com/"
 const private_header = prefix + ' ' + token_key;
-const port = process.env.PORT || 9000;
+const port = process.env.PORT || 80;
 
 var express = require('express')
 var cors = require('cors')
@@ -167,6 +167,6 @@ app.get('/private/document/:id', function (req, res, next) {
     });
 })
 
-app.listen(9000, function () {
+app.listen(80, function () {
     console.log('CORS-enabled web server listening on port 80')
 })
